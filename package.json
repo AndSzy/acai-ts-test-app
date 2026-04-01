@@ -1,0 +1,22 @@
+{
+  "name": "acai-test-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Test application for @acoustic/ac-ai-ts library",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "tsc -p tsconfig.json && node dist/index.js"
+  },
+  "dependencies": {
+    "@acoustic/ac-ai-ts": "file:../acai/ac-ai-ts",
+    "@aws-sdk/client-ssm": "^3.1021.0",
+    "@types/node": "^25.5.0",
+    "dotenv": "^17.3.1",
+    "mongodb": "^7.1.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}
