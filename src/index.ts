@@ -5,7 +5,23 @@ import {
   createAcaiClient,
   type AcaiConfig,
   type ChatCompletionRequest,
+  type Logger,
 } from '@acoustic/ac-ai-ts';
+
+const logger: Logger = {
+  log(message, context) {
+    console.log(`[LOG] ${message}`, context ?? '');
+  },
+  warn(message, context) {
+    console.warn(`[WARN] ${message}`, context ?? '');
+  },
+  error(message, context) {
+    console.error(`[ERROR] ${message}`, context ?? '');
+  },
+  debug(message, context) {
+    console.debug(`[DEBUG] ${message}`, context ?? '');
+  },
+};
 
 const AWS_REGION = process.env.AWS_REGION!;
 const SSM_SERVERS = process.env.SSM_SERVERS!;
@@ -61,6 +77,7 @@ async function main() {
     const config: AcaiConfig = {
       awsRegion: AWS_REGION,
       mongoClient,
+      logger,
     };
 
     const client = await createAcaiClient(config);
